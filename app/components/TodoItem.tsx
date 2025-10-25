@@ -30,7 +30,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
       </span>
       <button
         onClick={() => deleteTodo(todo.id)}
-        className='px-3 py-1 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-red-500'
+        className='px-3 py-1 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-red-500'
         aria-label={`Delete "${todo.text}"`}
       >
         Delete
