@@ -1,13 +1,17 @@
 import { TodoProvider } from '@/app/context/TodoContext'
 import AddTodoForm from '@/app/components/AddTodoForm'
 import TodoList from '@/app/components/TodoList'
+import DarkModeToggle from '@/app/components/DarkModeToggle'
 
 export default function Home() {
   return (
     <TodoProvider>
       <div className='min-h-screen bg-linear-to-br from-zinc-50 to-zinc-100 dark:from-zinc-950 dark:to-black py-8 px-4'>
         <main className='max-w-2xl mx-auto'>
-          <div className='mb-8 text-center'>
+          <div className='mb-8 text-center relative'>
+            <div className='absolute right-0 top-0'>
+              <DarkModeToggle />
+            </div>
             <h1 className='text-4xl font-bold text-zinc-900 dark:text-zinc-50 mb-2'>
               To-Do App
             </h1>
