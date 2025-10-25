@@ -1,4 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# To-Do App MVP
+
+A fast-to-ship, production-ready To-Do application built with Next.js, React Context API, and localStorage.
+
+## Features
+
+- ✅ Add new todos
+- ✅ Mark todos as complete/incomplete
+- ✅ Delete todos
+- ✅ Persistent storage (localStorage)
+- ✅ Responsive design
+- ✅ Dark mode support
+- ✅ Clean, modern UI with Tailwind CSS
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **State Management**: React Context API
+- **Styling**: Tailwind CSS v4
+- **Data Persistence**: localStorage
 
 ## Getting Started
 
@@ -6,19 +26,26 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the To-Do app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+├── types/todo.ts           # TypeScript types
+├── context/TodoContext.tsx # State management
+├── components/             # React components
+│   ├── AddTodoForm.tsx
+│   ├── TodoList.tsx
+│   └── TodoItem.tsx
+└── page.tsx               # Main page
+```
+
+## Architecture
+
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed documentation on design decisions, trade-offs, and future extension paths.
 
 ## Learn More
 
