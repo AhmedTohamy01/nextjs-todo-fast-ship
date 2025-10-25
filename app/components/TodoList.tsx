@@ -4,7 +4,18 @@ import { useTodos } from '@/app/context/TodoContext'
 import TodoItem from './TodoItem'
 
 export default function TodoList() {
-  const { todos } = useTodos()
+  const { todos, isLoading } = useTodos()
+
+  if (isLoading) {
+    return (
+      <div className='text-center py-12'>
+        <div className='inline-block w-8 h-8 border-4 border-zinc-300 dark:border-zinc-700 border-t-blue-600 dark:border-t-blue-400 rounded-full animate-spin'></div>
+        <p className='mt-4 text-sm text-zinc-500 dark:text-zinc-400'>
+          Loading todos...
+        </p>
+      </div>
+    )
+  }
 
   if (todos.length === 0) {
     return (

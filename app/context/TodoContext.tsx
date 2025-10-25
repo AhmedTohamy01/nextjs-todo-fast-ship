@@ -11,6 +11,7 @@ import { Todo } from '@/app/types/todo'
 
 interface TodoContextType {
   todos: Todo[]
+  isLoading: boolean
   addTodo: (text: string) => void
   toggleTodo: (id: string) => void
   deleteTodo: (id: string) => void
@@ -20,7 +21,7 @@ const TodoContext = createContext<TodoContextType | undefined>(undefined)
 
 export function TodoProvider({ children }: { children: ReactNode }) {
   const [todos, setTodos] = useState<Todo[]>([])
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   // Load todos from localStorage on mount
   useEffect(() => {
@@ -28,15 +29,15 @@ export function TodoProvider({ children }: { children: ReactNode }) {
     if (storedTodos) {
       setTodos(JSON.parse(storedTodos))
     }
-    setIsLoaded(true)
+    setIsLoading(false)
   }, [])
 
   // Save todos to localStorage whenever they change
   useEffect(() => {
-    if (isLoaded) {
+    if (!isLoading) {
       localStorage.setItem('todos', JSON.stringify(todos))
     }
-  }, [todos, isLoaded])
+  }, [todos, isLoading])
 
   const addTodo = (text: string) => {
     const newTodo: Todo = {
@@ -60,7 +61,9 @@ export function TodoProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <TodoContext.Provider value={{ todos, addTodo, toggleTodo, deleteTodo }}>
+    <TodoContext.Provider
+      value={{ todos, isLoading, addTodo, toggleTodo, deleteTodo }}
+    >
       {children}
     </TodoContext.Provider>
   )
